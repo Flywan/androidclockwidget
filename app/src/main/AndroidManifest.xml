@@ -1,0 +1,44 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android.deskclock.clockwidget">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <receiver
+            android:name=".AnalogAppWidgetProvider"
+            android:label="@string/analog_gadget" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.oldName"
+                android:value="com.android.deskclock.AnalogAppWidgetProvider" />
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/analog_appwidget" />
+        </receiver>
+        <receiver
+            android:name=".DigitalAppWidgetProvider"
+            android:label="@string/digital_gadget" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.android.deskclock.ON_QUARTER_HOUR" />
+                <action android:name="android.intent.action.DATE_CHANGED" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.SCREEN_ON" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+                <action android:name="android.intent.action.ALARM_CHANGED" />
+                <action android:name="com.android.deskclock.worldclock.update" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/digital_appwidget" />
+        </receiver>
+    </application>
+
+</manifest>
